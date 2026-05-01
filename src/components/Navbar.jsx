@@ -1,18 +1,46 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div>
-      <div className='bg-slate-400 h-16 flex items-center justify-between px-10'>
-        <ul className='flex space-x-4 text-lg font-bold justify-center place-items-end'>
-            <li className='text-white'>Home</li>
-            <li className='text-white'>About US</li>
-            <li className='text-white'>Services</li>
-            <li className='text-white'>Contact</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
+    <nav className="bg-slate-800 text-white sticky top-0 z-50">
+      <div className="flex justify-between items-center px-6 h-16">
 
-export default Navbar
+        
+        <h1 className="text-xl font-bold">FoodApp 🍔</h1>
+
+        
+        <ul className="hidden md:flex gap-6">
+          <li className="hover:text-orange-400 cursor-pointer">Home</li>
+          <li className="hover:text-orange-400 cursor-pointer">About</li>
+          <li className="hover:text-orange-400 cursor-pointer">Services</li>
+          <li className="hover:text-orange-400 cursor-pointer">Contact</li>
+        </ul>
+
+        
+        <div className="hidden md:block">
+          🛒 Cart ({totalItems})
+        </div>
+
+        
+        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl">
+          ☰
+        </button>
+      </div>
+
+      
+      {open && (
+        <div className="md:hidden bg-slate-700 flex flex-col items-center py-4 gap-3">
+          <p>Home</p>
+          <p>About</p>
+          <p>Services</p>
+          <p>Contact</p>
+          <p>🛒 Cart ({totalItems})</p>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
