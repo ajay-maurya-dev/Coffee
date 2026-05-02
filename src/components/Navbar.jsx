@@ -24,7 +24,7 @@ const Navbar = ({ totalItems }) => {
         </div>
 
         
-        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl ">
           ☰
         </button>
       </div>
